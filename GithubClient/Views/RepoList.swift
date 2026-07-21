@@ -1,28 +1,48 @@
-//
-//  RepoList.swift
-//  GithubClient
-//
-//  Created by Usuario invitado on 7/7/26.
-//
-
 import SwiftUI
 
-struct RepoList:View {
+struct RepoList: View {
+    @ObservedObject var controller: RepoListViewController
+
     var body: some View {
         NavigationStack {
-            VStack {
-                RepoItem()
-                RepoItem()
-                RepoItem()
-                RepoItem()
-                RepoItem()
+            Group {
+                if controller.isLoading {
+                    ProgressView("Cargando repositorios...")
+                } else if let errorMsg = controller.errorMsg {
+                    VStack(spacing: 12) {
+                        Image(systemName: "exclamationmark.triangle")
+                            .font(.largeTitle)
+                            .foregroundStyle(.red)
+                        Text(errorMsg)
+                            .multilineTextAlignment(.center)
+                        Button("Reintentar") {
+                            Task {
+                                await controller.loadRepositories()
+                            }
+                        }
+                        .buttonStyle(.borderedProminent)
+                    }
+                    .padding()
+                } else {
+                    List(controller.repos) { repo in
+                        RepoItem(repo: repo)
+                    }
+                    .listStyle(.plain)
+                    .refreshable {
+                        await controller.loadRepositories()
+                    }
+                }
             }
             .navigationTitle("Repositorios")
-            .navigationBarTitleDisplayMode(.inline)
-            
+            .task {
+                if controller.repos.isEmpty {
+                    await controller.loadRepositories()
+                }
+            }
         }
     }
 }
+
 #Preview {
-    RepoList()
+    RepoList(controller: RepoListViewController())
 }

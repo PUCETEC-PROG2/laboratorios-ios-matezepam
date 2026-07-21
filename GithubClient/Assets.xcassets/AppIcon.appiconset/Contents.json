@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "github-octocat-svgrepo-com.png",
+      "filename" : "githubLogo.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -13,7 +13,6 @@
           "value" : "dark"
         }
       ],
-      "filename" : "github-octocat-svgrepo-com 1.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -25,7 +24,6 @@
           "value" : "tinted"
         }
       ],
-      "filename" : "github-octocat-svgrepo-com 2.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"

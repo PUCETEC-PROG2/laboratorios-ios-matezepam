@@ -57,10 +57,10 @@ end
 
 ## Configuración del token (GITHUB_TOKEN)
 
-No incluyas el token en el código fuente. Opciones seguras para desarrollo local:
+No incluyas el token en el código fuente. El proyecto ignora `GithubClient/Resources/config.plist` para evitar publicar credenciales. Puedes usar una de estas opciones:
 
 - Añadir como variable de entorno en el esquema de Xcode: Product > Scheme > Edit Scheme > Run > Arguments > Environment Variables -> `GITHUB_TOKEN` = `<tu_token>`
-- Usar un archivo `.env` local que esté en `.gitignore` (no recomendado para producción)
+- Copiar `GithubClient/Resources/config.example.plist` como `GithubClient/Resources/config.plist` y reemplazar `REEMPLAZA_CON_TU_TOKEN`. El archivo local queda fuera de Git.
 
 En código Swift puedes leerlo desde las variables de entorno del proceso:
 

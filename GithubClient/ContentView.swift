@@ -1,34 +1,22 @@
-//
-//  ContentView.swift
-//  GithubClient
-//
-//  Created by Usuario invitado on 13/1/26.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var repoListController = RepoListViewController()
+
     var body: some View {
         TabView {
-            RepoList()
+            RepoList(controller: repoListController)
                 .tabItem {
-                    Label("Repositorios",
-                          systemImage:
-                                "arrow.trianglehead.branch")
+                    Label("Repos", systemImage: "arrow.trianglehead.branch")
                 }
-            RepoForm()
+            RepoForm(controller: repoListController)
                 .tabItem {
-                    Label("Crear Repositorios",
-                          systemImage:
-                                "plus")
+                    Label("Crear Repositorio", systemImage: "plus")
                 }
             Profile()
                 .tabItem {
-                    Label("Perfil de Usuario",
-                          systemImage: "person.crop.circle"
-                    )
+                    Label("Perfil", systemImage: "person.crop.circle")
                 }
-            
         }
     }
 }
