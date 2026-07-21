@@ -6,7 +6,16 @@ Este README contiene las instrucciones necesarias para desarrollar la versión i
 
 ## Datos del estudiante.
 - Nombre del Estudiante: Paulo Mateo Salazar Espinoza
-- Carrera / Nivel; Desarollo de Software, 4 Semestre
+- Carrera / Nivel: Desarrollo de Software, 4.º semestre
+
+## Funcionalidades implementadas
+
+- Consulta del perfil autenticado mediante la API de GitHub.
+- Listado y actualización de los repositorios del usuario.
+- Creación de repositorios públicos desde un formulario SwiftUI.
+- Estados de carga, mensajes de error y opción de reintento.
+- Configuración local segura del token, excluida del repositorio mediante `.gitignore`.
+
 ---
 
 ## Requisitos mínimos
