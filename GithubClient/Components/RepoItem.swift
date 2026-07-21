@@ -10,7 +10,7 @@ struct RepoItem: View {
                     .resizable()
                     .scaledToFit()
             } placeholder: {
-                Image("GithubLogo")
+                Image("githubLogo")
                     .resizable()
                     .scaledToFit()
             }

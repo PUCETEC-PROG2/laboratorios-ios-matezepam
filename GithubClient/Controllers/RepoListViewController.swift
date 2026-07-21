@@ -1,4 +1,5 @@
 import Foundation
+import Combine
 import Alamofire
 
 @MainActor
@@ -31,10 +32,11 @@ class RepoListViewController: ObservableObject {
         isLoading = true
         errorMsg = nil
         do {
+            let gitignoreTemplate = language == "JavaScript" ? "Node" : language
             let newRepo = try await githubService.createRepo(
                 name: name,
                 description: description,
-                gitignoreTemplate: language
+                gitignoreTemplate: gitignoreTemplate
             )
             repos.insert(newRepo, at: 0)
             isLoading = false
